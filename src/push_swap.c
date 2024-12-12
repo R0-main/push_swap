@@ -6,16 +6,45 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 09:09:19 by rguigneb          #+#    #+#             */
-/*   Updated: 2024/12/08 09:11:23 by rguigneb         ###   ########.fr       */
+/*   Updated: 2024/12/12 16:46:17 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "push_swap.h"
+#include <stdio.h>
 #include <unistd.h>
 
-int main(int argc, char const *argv[])
+int	main(int argc, char const *argv[])
 {
-	(void)argc;
-	(void)argv;
-	write(1, "Goofy\n", 6);
-	return 0;
+	t_dllist	*begin;
+	t_dllist	*a;
+	t_dllist	*b;
+	// t_dllist	*lst;
+	// t_dllist	*lst2;
+
+	a = NULL;
+	b = NULL;
+	printf("%d\n", argc);
+	if (parse_arguments(&a, &b, argc, argv))
+	{
+		write(2, "ERROR WITH ARGS\n", 17);
+		return (0);
+	}
+	// lst = new_linked_list(15);
+	// lst2 = new_linked_list(25);
+	// printf("&a : %p\n", a);
+	// add_back_of_list(&a, lst2);
+	// add_back_of_list(&a, lst);
+	// printf("&a : %p\n", a);
+	begin = a;
+	while (begin)
+	{
+		printf("d : %d | prev : %p | next : %p\n", begin->value, begin->prev, begin->next);
+		begin = begin->next;
+	}
+	free_list(a);
+	free_list(b);
+	// printf("d : %d | prev : %p | next : %p\n", a->next->value, a->next->prev,
+		// a->next->next);
+	return (0);
 }
