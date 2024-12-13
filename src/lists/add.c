@@ -6,7 +6,7 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 16:54:47 by rguigneb          #+#    #+#             */
-/*   Updated: 2024/12/12 17:16:43 by rguigneb         ###   ########.fr       */
+/*   Updated: 2024/12/13 08:56:44 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,6 @@ void	add_back_of_list(t_dllist **first, t_dllist *to_add)
 	if (!*first)
 	{
 		*first = to_add;
-		to_add->prev = NULL;
-		to_add->next = NULL;
 	}
 	else
 	{
