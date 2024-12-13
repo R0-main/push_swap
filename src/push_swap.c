@@ -6,7 +6,7 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 09:09:19 by rguigneb          #+#    #+#             */
-/*   Updated: 2024/12/13 15:06:21 by rguigneb         ###   ########.fr       */
+/*   Updated: 2024/12/13 15:36:54 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ int	main(int argc, char const *argv[])
 		write(2, "ERROR WITH ARGS\n", 17);
 		return (0);
 	}
+	a = NULL;
+	b = NULL;
 	// lst = new_linked_list(15);
 	// lst2 = new_linked_list(25);
 	// printf("&a : %p\n", a);
@@ -60,6 +62,8 @@ int	main(int argc, char const *argv[])
 	rotate_b(&b);
 	rotate_b(&b);
 	rotate_b(&a);
+	reverse_rotate_b(&b);
+	reverse_rotate_b(&b);
 	// rotate_a(&a);
 	// swap_a(&a);
 	// push_b(&a, &b);

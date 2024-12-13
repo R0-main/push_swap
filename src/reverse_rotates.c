@@ -1,52 +1,57 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotates.c                                          :+:      :+:    :+:   */
+/*   reverse_rotates.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 14:29:49 by rguigneb          #+#    #+#             */
-/*   Updated: 2024/12/13 15:37:23 by rguigneb         ###   ########.fr       */
+/*   Updated: 2024/12/13 15:37:49 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static	int rotate(t_dllist **x)
+static int	reverse_rotate(t_dllist **x)
 {
-	t_dllist	*first;
+	t_dllist	*second;
 	t_dllist	*last;
 
 	if (!x || !*x)
 		return (0);
-	first = *x;
-	if (get_list_length(first) == 1)
-		return (0);
 	last = get_last_element(*x);
-	*x = (*x)->next;
+	second = *x;
+	if (get_list_length(second) == 1)
+		return (0);
+	*x = last;
 	if (*x)
-		(*x)->prev = NULL;
-	if (first)
 	{
-		first->next = NULL;
-		first->prev = last;
+		if (last->prev)
+		{
+			last->prev->next = NULL;
+			last->prev = NULL;
+		}
+		last->next = second;
 	}
-	if (last)
-		last->next = first;
+	if (second)
+	{
+		second->prev = last;
+		last = get_last_element(*x);
+	}
 	return (0);
 }
 
-int	rotate_a(t_dllist **a)
+int	reverse_rotate_a(t_dllist **a)
 {
-	return (rotate(a));
+	return (reverse_rotate(a));
 }
 
-int	rotate_b(t_dllist **b)
+int	reverse_rotate_b(t_dllist **b)
 {
-	return (rotate(b));
+	return (reverse_rotate(b));
 }
 
-int rotate_in_both(t_dllist **a, t_dllist **b)
+int	reverse_rotate_in_both(t_dllist **a, t_dllist **b)
 {
-	return (rotate_a(a) + rotate_b(b));
+	return (reverse_rotate_a(a) + reverse_rotate_b(b));
 }

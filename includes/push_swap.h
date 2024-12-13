@@ -6,7 +6,7 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 09:12:15 by rguigneb          #+#    #+#             */
-/*   Updated: 2024/12/13 14:55:27 by rguigneb         ###   ########.fr       */
+/*   Updated: 2024/12/13 15:25:03 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,12 @@ int								swap_b(t_dllist **b);
 
 int								rotate_a(t_dllist **a);
 int								rotate_b(t_dllist **b);
+int								rotate_in_both(t_dllist **a, t_dllist **b);
 
-int								reverse_rotate(t_dllist **a, t_dllist **b);
-int								reverse_rotate_a(t_dllist **a, t_dllist **b);
-int								reverse_rotate_b(t_dllist **a, t_dllist **b);
-int								reverse_rotate_a_and_b(t_dllist **a,
+// int								reverse_rotate(t_dllist **a, t_dllist **b);
+int								reverse_rotate_a(t_dllist **a);
+int								reverse_rotate_b(t_dllist **b);
+int								reverse_rotate_in_both(t_dllist **a,
 									t_dllist **b);
 
 // UTILS
