@@ -6,11 +6,26 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 09:52:21 by rguigneb          #+#    #+#             */
-/*   Updated: 2024/12/12 17:20:40 by rguigneb         ###   ########.fr       */
+/*   Updated: 2024/12/13 14:58:56 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	get_list_length(t_dllist *first)
+{
+	int	i;
+
+	i = 0;
+	if (!first)
+		return (0);
+	while (first != NULL)
+	{
+		first = first->next;
+		i++;
+	}
+	return (i);
+}
 
 void	free_list(t_dllist *first)
 {

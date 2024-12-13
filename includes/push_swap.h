@@ -6,7 +6,7 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 09:12:15 by rguigneb          #+#    #+#             */
-/*   Updated: 2024/12/13 11:39:33 by rguigneb         ###   ########.fr       */
+/*   Updated: 2024/12/13 14:55:27 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ int								parse_arguments(t_dllist **a, t_dllist **b,
 
 // LST_UTILS
 t_dllist						*new_linked_list(int value);
-
 t_dllist						*get_last_element(t_dllist *first);
 void							free_list(t_dllist *first);
 void							delete_element(t_dllist **element);
@@ -40,20 +39,21 @@ void							add_front_of_list(t_dllist **first,
 									t_dllist *to_add);
 void							add_back_of_list(t_dllist **first,
 									t_dllist *to_add);
+int								get_list_length(t_dllist *first);
 
-int							push_a(t_dllist **a, t_dllist **b);
-int							push_b(t_dllist **a, t_dllist **b);
+int								push_a(t_dllist **a, t_dllist **b);
+int								push_b(t_dllist **a, t_dllist **b);
 
-int							swap_a(t_dllist **a);
-int							swap_b(t_dllist **b);
+int								swap_a(t_dllist **a);
+int								swap_b(t_dllist **b);
 
-int							rotate_a(t_dllist **a, t_dllist **b);
-int							rotate_b(t_dllist **a, t_dllist **b);
+int								rotate_a(t_dllist **a);
+int								rotate_b(t_dllist **b);
 
-int							reverse_rotate(t_dllist **a, t_dllist **b);
-int							reverse_rotate_a(t_dllist **a, t_dllist **b);
-int							reverse_rotate_b(t_dllist **a, t_dllist **b);
-int							reverse_rotate_a_and_b(t_dllist **a,
+int								reverse_rotate(t_dllist **a, t_dllist **b);
+int								reverse_rotate_a(t_dllist **a, t_dllist **b);
+int								reverse_rotate_b(t_dllist **a, t_dllist **b);
+int								reverse_rotate_a_and_b(t_dllist **a,
 									t_dllist **b);
 
 // UTILS
