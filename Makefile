@@ -3,6 +3,8 @@ CC=cc
 CFLAGS=-Wall -Werror -Wextra -I./includes/
 
 SRCS=./src/push_swap.c\
+	./src/pushs.c\
+	./src/lists/add.c\
 	./src/lists/utils.c\
 	./src/parsing/parsing.c\
 	./src/utils/ft_atoi.c\

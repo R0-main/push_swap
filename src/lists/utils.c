@@ -6,7 +6,7 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 09:52:21 by rguigneb          #+#    #+#             */
-/*   Updated: 2024/12/12 14:00:48 by rguigneb         ###   ########.fr       */
+/*   Updated: 2024/12/12 17:20:40 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,37 +47,18 @@ t_dllist	*get_last_element(t_dllist *first)
 	return (first);
 }
 
-void	add_front_of_list(t_dllist **first, t_dllist *to_add)
+void	delete_element(t_dllist **element)
 {
-	if (!(*first))
+	(void)element;
+	printf("prev : %p | next : %p\n", (*element)->prev, (*element)->next);
+	if ((*element)->prev)
 	{
-		*first = to_add;
-		to_add->prev = NULL;
-		to_add->next = NULL;
+		(*element)->prev->next = (*element)->next;
 	}
-	else
+	if ((*element)->next)
 	{
-		(*first)->prev = to_add;
-		to_add->prev = NULL;
-		to_add->next = *first;
-		*first = to_add;
+		(*element) = (*element)->next;
+		(*element)->next->prev = (*element);
 	}
-}
-
-void	add_back_of_list(t_dllist **first, t_dllist *to_add)
-{
-	t_dllist	*last;
-
-	if (!*first)
-	{
-		*first = to_add;
-		to_add->prev = NULL;
-		to_add->next = NULL;
-	}
-	else
-	{
-		last = get_last_element(*first);
-		last->next = to_add;
-		to_add->prev = last;
-	}
+	// free(element);
 }
