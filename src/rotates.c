@@ -6,7 +6,7 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 14:29:49 by rguigneb          #+#    #+#             */
-/*   Updated: 2024/12/13 15:05:39 by rguigneb         ###   ########.fr       */
+/*   Updated: 2024/12/13 15:13:49 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,10 @@ int	rotate_a(t_dllist **a)
 int	rotate_b(t_dllist **b)
 {
 	return (rotate(b));
+}
+
+int rotate_in_both(t_dllist **a, t_dllist **b)
+{
+	rotate_a(a);
+	rotate_b(b);
 }
