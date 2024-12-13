@@ -6,7 +6,7 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 10:36:51 by rguigneb          #+#    #+#             */
-/*   Updated: 2024/12/13 12:05:36 by rguigneb         ###   ########.fr       */
+/*   Updated: 2024/12/13 12:58:49 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,10 @@ int	swap_b(t_dllist **b)
 	if (!(*b) || !(*b)->next)
 		return (0);
 	tmp = (*b)->next;
-	(*b)->next = *b;
+	tmp->prev = NULL;
+	(*b)->next = tmp->next;
+	tmp->next = *b;
+	(*b)->prev = tmp;
 	*b = tmp;
 	return (0);
 }
