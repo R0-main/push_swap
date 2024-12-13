@@ -4,6 +4,7 @@ CFLAGS=-Wall -Werror -Wextra -I./includes/
 
 SRCS=./src/push_swap.c\
 	./src/pushs.c\
+	./src/swaps.c\
 	./src/lists/add.c\
 	./src/lists/utils.c\
 	./src/parsing/parsing.c\

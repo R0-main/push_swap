@@ -6,7 +6,7 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 09:09:19 by rguigneb          #+#    #+#             */
-/*   Updated: 2024/12/13 09:20:22 by rguigneb         ###   ########.fr       */
+/*   Updated: 2024/12/13 12:02:34 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,15 @@ int	main(int argc, char const *argv[])
 	push_b(&a, &b);
 	push_b(&a, &b);
 	push_b(&a, &b);
+	push_b(&a, &b);
+	push_b(&a, &b);
+	push_b(&a, &b);
 	push_a(&a, &b);
-	// push_a(&a, &b);
+	push_a(&a, &b);
+	swap_a(&a);
+	swap_a(&a);
+		swap_a(&a);
+	// swap_a(&a);
 	// push_b(&a, &b);
 	// push_b(&a, &b);
 	printf("---------------b---------------\n");

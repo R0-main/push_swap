@@ -6,7 +6,7 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 09:12:15 by rguigneb          #+#    #+#             */
-/*   Updated: 2024/12/13 09:19:23 by rguigneb         ###   ########.fr       */
+/*   Updated: 2024/12/13 11:39:33 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ void							add_back_of_list(t_dllist **first,
 int							push_a(t_dllist **a, t_dllist **b);
 int							push_b(t_dllist **a, t_dllist **b);
 
-int							swap_a(t_dllist **a, t_dllist **b);
-int							swap_b(t_dllist **a, t_dllist **b);
+int							swap_a(t_dllist **a);
+int							swap_b(t_dllist **b);
 
 int							rotate_a(t_dllist **a, t_dllist **b);
 int							rotate_b(t_dllist **a, t_dllist **b);
