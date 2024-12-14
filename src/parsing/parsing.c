@@ -6,7 +6,7 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 13:40:48 by rguigneb          #+#    #+#             */
-/*   Updated: 2024/12/14 09:17:41 by rguigneb         ###   ########.fr       */
+/*   Updated: 2024/12/14 09:53:34 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ int	parse_multiple_args(t_dllist **a, t_dllist **b, int argc,
 			return (free_list(*a), free_list(*b), free_list(tmp), 1);
 		add_back_of_list(a, tmp);
 	}
+	init_values(a);
 	return (0);
 }
 
@@ -64,6 +65,7 @@ int	parse_one_string_args(t_dllist **a, t_dllist **b, char const **argv)
 		i++;
 	}
 	free(strs);
+	init_values(a);
 	return (0);
 }
 
