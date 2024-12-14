@@ -6,7 +6,7 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 09:12:15 by rguigneb          #+#    #+#             */
-/*   Updated: 2024/12/14 15:13:51 by rguigneb         ###   ########.fr       */
+/*   Updated: 2024/12/14 15:32:08 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 
 # include <stdio.h>
 # include <stdlib.h>
+# include <unistd.h>
 
 typedef struct s_doubly_linked_list
 {

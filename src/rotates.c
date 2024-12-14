@@ -6,7 +6,7 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 14:29:49 by rguigneb          #+#    #+#             */
-/*   Updated: 2024/12/14 11:23:06 by rguigneb         ###   ########.fr       */
+/*   Updated: 2024/12/14 15:29:49 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,15 +39,18 @@ static int	rotate(t_dllist **x)
 
 int	rotate_a(t_dllist **a)
 {
+	write(1, "ra\n", 3);
 	return (rotate(a));
 }
 
 int	rotate_b(t_dllist **b)
 {
+	write(1, "rb\n", 3);
 	return (rotate(b));
 }
 
 int	rotate_in_both(t_dllist **a, t_dllist **b)
 {
+	write(1, "rr\n", 3);
 	return (rotate_a(a) + rotate_b(b));
 }

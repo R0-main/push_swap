@@ -6,7 +6,7 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 16:51:16 by rguigneb          #+#    #+#             */
-/*   Updated: 2024/12/14 14:11:14 by rguigneb         ###   ########.fr       */
+/*   Updated: 2024/12/14 15:28:18 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ int	push_a(t_dllist **a, t_dllist **b)
 	}
 	init_values(b);
 	init_values(a);
+	write(1, "pa\n", 3);
 	return (0);
 }
 
@@ -69,5 +70,6 @@ int	push_b(t_dllist **a, t_dllist **b)
 	}
 	init_values(b);
 	init_values(a);
+	write(1, "pb\n", 3);
 	return (0);
 }
