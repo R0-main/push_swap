@@ -6,13 +6,13 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 14:29:49 by rguigneb          #+#    #+#             */
-/*   Updated: 2024/12/13 15:37:23 by rguigneb         ###   ########.fr       */
+/*   Updated: 2024/12/14 11:23:06 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static	int rotate(t_dllist **x)
+static int	rotate(t_dllist **x)
 {
 	t_dllist	*first;
 	t_dllist	*last;
@@ -33,6 +33,7 @@ static	int rotate(t_dllist **x)
 	}
 	if (last)
 		last->next = first;
+	init_values(x);
 	return (0);
 }
 
@@ -46,7 +47,7 @@ int	rotate_b(t_dllist **b)
 	return (rotate(b));
 }
 
-int rotate_in_both(t_dllist **a, t_dllist **b)
+int	rotate_in_both(t_dllist **a, t_dllist **b)
 {
 	return (rotate_a(a) + rotate_b(b));
 }

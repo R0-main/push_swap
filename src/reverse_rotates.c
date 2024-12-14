@@ -6,7 +6,7 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 14:29:49 by rguigneb          #+#    #+#             */
-/*   Updated: 2024/12/13 15:37:49 by rguigneb         ###   ########.fr       */
+/*   Updated: 2024/12/14 11:23:09 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ static int	reverse_rotate(t_dllist **x)
 		second->prev = last;
 		last = get_last_element(*x);
 	}
+	init_values(x);
 	return (0);
 }
 

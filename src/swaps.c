@@ -6,13 +6,13 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 10:36:51 by rguigneb          #+#    #+#             */
-/*   Updated: 2024/12/13 15:38:18 by rguigneb         ###   ########.fr       */
+/*   Updated: 2024/12/14 11:23:13 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int swap(t_dllist **x)
+static int	swap(t_dllist **x)
 {
 	t_dllist	*tmp;
 
@@ -24,6 +24,7 @@ static int swap(t_dllist **x)
 	tmp->next = *x;
 	(*x)->prev = tmp;
 	*x = tmp;
+	init_values(x);
 	return (0);
 }
 
