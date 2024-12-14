@@ -6,7 +6,7 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 09:09:19 by rguigneb          #+#    #+#             */
-/*   Updated: 2024/12/13 15:39:18 by rguigneb         ###   ########.fr       */
+/*   Updated: 2024/12/14 10:16:47 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,79 +14,38 @@
 #include <stdio.h>
 #include <unistd.h>
 
+void	process(t_dllist **a, t_dllist **b)
+{
+	// push all from a untile a == 3
+	while (get_list_length(a) > 3)
+		push_b(a, b);
+	fast_sort(a);
+}
+
 int	main(int argc, char const *argv[])
 {
-	t_dllist	*begin;
 	t_dllist	*a;
 	t_dllist	*b;
 
-	// t_dllist	*lst;
-	// t_dllist	*lst2;
 	a = NULL;
 	b = NULL;
-	printf("%d\n", argc);
 	if (parse_arguments(&a, &b, argc, argv))
 	{
 		write(2, "ERROR WITH ARGS\n", 17);
 		return (0);
 	}
-	// a = NULL;
-	// b = NULL;
-	// lst = new_linked_list(15);
-	// lst2 = new_linked_list(25);
-	// printf("&a : %p\n", a);
-	// add_back_of_list(&a, lst2);
-	// add_back_of_list(&a, lst);
-	// printf("&a : %p\n", a);
-	printf("&a : %p\n", a);
-	begin = a;
-	while (begin)
+	if (!is_sorted(&a))
 	{
-		printf("d : %d | prev : %p | next : %p\n", begin->value, begin->prev,
-			begin->next);
-		begin = begin->next;
+		if (get_list_length(a) == 2)
+			swap_a(&a);
+		else if (get_list_length(a) == 3)
+			fast_sort(&a);
+		else
+			process(a, b);
 	}
-	printf("&a : %p\n", a);
-	push_b(&a, &b);
-	push_b(&a, &b);
-	push_b(&a, &b);
-	push_b(&a, &b);
-	push_b(&a, &b);
-	push_b(&a, &b);
-	push_a(&a, &b);
-	push_a(&a, &b);
-	swap_a(&a);
-	swap_a(&a);
-	swap_a(&a);
-	swap_b(&b);
-	rotate_b(&b);
-	rotate_b(&b);
-	rotate_b(&a);
-	reverse_rotate_b(&b);
-	reverse_rotate_b(&b);
-	// rotate_a(&a);
-	// swap_a(&a);
-	// push_b(&a, &b);
-	// push_b(&a, &b);
-	printf("---------------b---------------\n");
-	begin = b;
-	while (begin)
-	{
-		printf("d : %d | prev : %p | next : %p\n", begin->value, begin->prev,
-			begin->next);
-		begin = begin->next;
-	}
-	printf("---------------a---------------\n");
-	begin = a;
-	while (begin)
-	{
-		printf("d : %d | prev : %p | next : %p\n", begin->value, begin->prev,
-			begin->next);
-		begin = begin->next;
-	}
+	if (is_sorted(&a))
+		printf("fqfwqfq\n\n");
 	free_list(a);
 	free_list(b);
-	// printf("d : %d | prev : %p | next : %p\n", a->next->value, a->next->prev,
-	// a->next->next);
 	return (0);
 }

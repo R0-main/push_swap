@@ -1,27 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_not_only_digits.c                               :+:      :+:    :+:   */
+/*   is_sorted.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/12 14:47:35 by rguigneb          #+#    #+#             */
-/*   Updated: 2024/12/14 09:18:45 by rguigneb         ###   ########.fr       */
+/*   Created: 2024/12/14 09:10:21 by rguigneb          #+#    #+#             */
+/*   Updated: 2024/12/14 09:40:37 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	is_not_only_digits(const char *str)
+int	is_sorted(t_dllist **x)
 {
-	int	i;
+	long	last_n;
+	int		first_loop;
+	t_dllist	*current;
 
-	i = 0;
-	while (str[i])
+	last_n = 0;
+	first_loop = 1;
+	current = *x;
+	while (current != NULL)
 	{
-		if ((str[i] > '9' || str[i] < '0') && str[i] != '-')
-			return (1);
-		i++;
+		if (first_loop == 0 && current->value < last_n)
+			return (0);
+		if (first_loop == 1)
+			first_loop = 0;
+		last_n = current->value;
+		current = current->next;
 	}
-	return (0);
+	return (1);
 }

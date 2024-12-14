@@ -7,9 +7,12 @@ SRCS=./src/push_swap.c\
 	./src/swaps.c\
 	./src/rotates.c\
 	./src/reverse_rotates.c\
+	./src/fast-sort/fast-sort.c\
 	./src/lists/add.c\
 	./src/lists/utils.c\
+	./src/lists/is_sorted.c\
 	./src/parsing/parsing.c\
+	./src/parsing/values_init.c\
 	./src/utils/ft_atoi.c\
 	./src/utils/ft_strlen.c\
 	./src/utils/ft_substr.c\
