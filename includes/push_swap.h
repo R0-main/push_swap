@@ -6,7 +6,7 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 09:12:15 by rguigneb          #+#    #+#             */
-/*   Updated: 2024/12/13 15:25:03 by rguigneb         ###   ########.fr       */
+/*   Updated: 2024/12/14 08:57:17 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 typedef struct s_doubly_linked_list
 {
-	int							value;
+	long						value;
 	int							index;
 	struct s_doubly_linked_list	*prev;
 	struct s_doubly_linked_list	*next;
@@ -59,7 +59,7 @@ int								reverse_rotate_in_both(t_dllist **a,
 
 // UTILS
 size_t							ft_strlen(const char *s);
-int								ft_atoi(const char *nptr);
+long							ft_atoi(const char *nptr);
 int								is_not_only_digits(const char *str);
 char							**ft_split(char const *s, char c);
 void							free_split(char **tab, int index);
