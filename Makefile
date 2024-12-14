@@ -7,6 +7,7 @@ SRCS=./src/push_swap.c\
 	./src/swaps.c\
 	./src/rotates.c\
 	./src/reverse_rotates.c\
+	./src/link_nodes.c\
 	./src/fast-sort/fast-sort.c\
 	./src/lists/add.c\
 	./src/lists/utils.c\

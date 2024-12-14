@@ -6,7 +6,7 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 09:12:15 by rguigneb          #+#    #+#             */
-/*   Updated: 2024/12/14 09:48:09 by rguigneb         ###   ########.fr       */
+/*   Updated: 2024/12/14 15:13:51 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,9 @@ typedef struct s_doubly_linked_list
 	long						value;
 	int							index;
 	int							is_biggest;
+	int							cost;
+	int							is_above_mediane;
+	struct s_doubly_linked_list	*target;
 	struct s_doubly_linked_list	*prev;
 	struct s_doubly_linked_list	*next;
 }								t_dllist;
@@ -62,7 +65,9 @@ int								reverse_rotate_b(t_dllist **b);
 int								reverse_rotate_in_both(t_dllist **a,
 									t_dllist **b);
 
+t_dllist						*find_cheapest(t_dllist **x);
 int								is_sorted(t_dllist **x);
+void							link_nodes_from_b(t_dllist **a, t_dllist **b);
 
 // UTILS
 size_t							ft_strlen(const char *s);

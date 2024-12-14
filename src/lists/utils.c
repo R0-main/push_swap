@@ -6,7 +6,7 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 09:52:21 by rguigneb          #+#    #+#             */
-/*   Updated: 2024/12/13 14:58:56 by rguigneb         ###   ########.fr       */
+/*   Updated: 2024/12/14 14:11:02 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ t_dllist	*new_linked_list(int value)
 		return (NULL);
 	lst->value = value;
 	lst->index = 0;
+	lst->is_biggest = 0;
+	lst->target = NULL;
 	lst->next = NULL;
 	lst->prev = NULL;
 	return (lst);
