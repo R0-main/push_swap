@@ -6,7 +6,7 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 14:11:47 by rguigneb          #+#    #+#             */
-/*   Updated: 2024/12/14 15:13:27 by rguigneb         ###   ########.fr       */
+/*   Updated: 2024/12/14 18:40:40 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ t_dllist	*find_cheapest(t_dllist **x)
 		{
 			cheapest = current;
 		}
+		// printf("current cost : %d\n", current->cost + current->target->cost);
+		// printf("cheapest cost : %d\n", cheapest->cost + cheapest->target->cost);
 		current = current->next;
 	}
 	return (cheapest);
@@ -38,7 +40,7 @@ t_dllist	*find_biggest(t_dllist **x)
 	current = *x;
 	while (current != NULL)
 	{
-		if (current == *x || current->value < biggest->value)
+		if (current == *x || current->value > biggest->value)
 		{
 			biggest = current;
 		}
@@ -64,24 +66,15 @@ t_dllist	*find_smallest(t_dllist **x)
 	return (smallest);
 }
 
-t_dllist	*get_target(t_dllist **to, t_dllist **from, t_dllist *k)
+t_dllist	*get_target(t_dllist **to, t_dllist *k)
 {
-	t_dllist	*current;
-	t_dllist	*bigger;
-
-	current = *to;
-	if (k == find_biggest(from))
-		return (find_smallest(to));
-	while (current != NULL)
+	if (k == find_biggest(to))
 	{
-		if (current == *to || (current->value > k->value
-				&& current->value < bigger->value))
-		{
-			bigger = current;
-		}
-		current = current->next;
+		// printf("Small\n\n\n");
+		return (find_smallest(to));
 	}
-	return (bigger);
+	// printf("BIG\n\n\n");
+	return (find_biggest(to));
 }
 
 void	link_nodes_from_b(t_dllist **a, t_dllist **b)
@@ -91,9 +84,13 @@ void	link_nodes_from_b(t_dllist **a, t_dllist **b)
 
 	i = 0;
 	current = *b;
+	// init_values(a);
 	while (current != NULL)
 	{
-		current->target = get_target(a, b, current);
+		current->target = get_target(a, current);
+		// printf("biggest value : %d\n", current->is_biggest);
+		// printf("current value : %ld\n", current->value);
+		// printf("target value : %ld\n", current->target->value);
 		current = current->next;
 	}
 }

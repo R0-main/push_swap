@@ -6,7 +6,7 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 09:12:15 by rguigneb          #+#    #+#             */
-/*   Updated: 2024/12/14 15:32:08 by rguigneb         ###   ########.fr       */
+/*   Updated: 2024/12/14 16:11:06 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ int								reverse_rotate_in_both(t_dllist **a,
 t_dllist						*find_cheapest(t_dllist **x);
 int								is_sorted(t_dllist **x);
 void							link_nodes_from_b(t_dllist **a, t_dllist **b);
+t_dllist						*find_smallest(t_dllist **x);
 
 // UTILS
 size_t							ft_strlen(const char *s);

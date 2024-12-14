@@ -6,7 +6,7 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 09:46:45 by rguigneb          #+#    #+#             */
-/*   Updated: 2024/12/14 15:21:25 by rguigneb         ###   ########.fr       */
+/*   Updated: 2024/12/14 17:33:20 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,21 +59,19 @@ void	init_values(t_dllist **a)
 
 	d = 0;
 	last_bigger = -1;
-	bigger = NULL;
+	bigger = *a;
 	begin = *a;
-	while ((*a) != NULL)
+	while (begin != NULL)
 	{
-		if (d == 0 || (*a)->value > last_bigger)
+		if (d == 0 || begin->value > last_bigger)
 		{
-			last_bigger = (*a)->value;
-			if (bigger)
-				bigger->is_biggest = 0;
-			bigger = (*a);
-			(*a)->is_biggest = 1;
+			last_bigger = begin->value;
+			bigger->is_biggest = 0;
+			bigger = begin;
+			begin->is_biggest = 1;
 		}
-		(*a)->index = d++;
-		(*a) = (*a)->next;
+		begin->index = d++;
+		begin = begin->next;
 	}
-	*a = begin;
 	calculate_and_apply_mediane(a);
 }
