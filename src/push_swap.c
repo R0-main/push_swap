@@ -6,7 +6,7 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 09:09:19 by rguigneb          #+#    #+#             */
-/*   Updated: 2024/12/15 16:01:41 by rguigneb         ###   ########.fr       */
+/*   Updated: 2024/12/15 16:31:43 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,11 +130,7 @@ void	print_list(t_dllist **x)
 	printf("List : \n");
 	while (current)
 	{
-		// printf("%ld -> %ld | my cost : %d | target cost : %d | total cost :
-		// 	%d | mediane : %d | index : %d\n", current->value,
-		// 	current->target->value, current->cost, current->target->cost,
-		// 	current->cost + current->target->cost, current->is_above_mediane,
-		// 	current->index);
+		printf("%ld |  index : %d\n", current->value, current->index);
 		current = current->next;
 	}
 }
@@ -154,13 +150,21 @@ void	process(t_dllist **a, t_dllist **b)
 		b_len = get_list_length(*b);
 		biggest = find_biggest(b);
 		// printf("biggest : %ld\n", biggest->value);
-		if (biggest->index > b_len / 2)
-			while (*b != biggest)
-				reverse_rotate_b(b);
-		else
-			while (*b != biggest)
-				rotate_b(b);
+		// print_list(b);
+		while (*b != biggest)
+		{
+			// print_list(b);
+			reverse_rotate_b(b);
+		}
+		// reverse_rotate_b(b);
+		// if (biggest->index < b_len / 2)
+		// 	while (*b != biggest)
+		// 		reverse_rotate_b(b);
+		// else
+		// 	while (*b != biggest)
+		// 		rotate_b(b);
 		// printf("current : %ld\n", (*b)->value);
+		// print_list(b);
 		push_a(a, b);
 		// push_a(a, b);
 	}
