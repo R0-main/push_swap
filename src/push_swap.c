@@ -6,7 +6,7 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 09:09:19 by rguigneb          #+#    #+#             */
-/*   Updated: 2024/12/14 18:48:39 by rguigneb         ###   ########.fr       */
+/*   Updated: 2024/12/15 16:01:41 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,17 @@ void	finish_rotation(t_dllist **x, t_dllist *cheapest, int type)
 	{
 		if (type == 'a')
 		{
-			rotate_a(x);
+			if (!cheapest->is_above_mediane)
+				rotate_a(x);
+			else
+				reverse_rotate_a(x);
 		}
 		else
 		{
-			rotate_b(x);
+			if (!cheapest->is_above_mediane)
+				rotate_b(x);
+			else
+				reverse_rotate_b(x);
 		}
 	}
 }
@@ -51,41 +57,149 @@ void	execute_best_action(t_dllist **a, t_dllist **b)
 	push_a(a, b);
 }
 
+void	combine(t_dllist *smallests, t_dllist *biggest, t_dllist *pivot)
+{
+	t_dllist	*current;
+
+	current = get_last_element(smallests);
+	if (current)
+		current->next = pivot;
+	if (pivot)
+	{
+		pivot->prev = current;
+		pivot->next = biggest;
+	}
+	if (biggest)
+		biggest->prev = pivot;
+}
+
+t_dllist	*quick_sort(t_dllist **x)
+{
+	t_dllist	*last;
+	t_dllist	*current;
+	t_dllist	*smallests;
+	t_dllist	*biggest;
+
+	// printf("length : %d\n", get_list_length(*x));
+	if (get_list_length(*x) <= 1)
+		return (*x);
+	if (get_list_length(*x) == 3)
+	{
+		fast_sort(x);
+		return (*x);
+	}
+	smallests = NULL;
+	biggest = NULL;
+	last = get_last_element(*x);
+	current = *x;
+	while (current->next != NULL)
+	{
+		if (current->value > last->value)
+			add_back_of_list(&biggest, new_linked_list(current->value));
+		else
+			add_front_of_list(&smallests, new_linked_list(current->value));
+		// printf("smallests v : %ld\n", smallests->value);
+		current = current->next;
+		// printf("biggest v : %p\n", current->next);
+	}
+	if (get_list_length(smallests) > 1)
+		smallests = quick_sort(&smallests);
+	if (get_list_length(biggest) > 1)
+		biggest = quick_sort(&biggest);
+	combine(smallests, biggest, last);
+	return (smallests);
+}
+void	print_list_simple(t_dllist **x)
+{
+	t_dllist	*current;
+
+	current = *x;
+	while (current)
+	{
+		printf("%ld | cost : %d | mediane : %d | index : %d\n", current->value,
+			current->cost, current->is_above_mediane, current->index);
+		current = current->next;
+	}
+}
+
+void	print_list(t_dllist **x)
+{
+	t_dllist	*current;
+
+	current = *x;
+	printf("List : \n");
+	while (current)
+	{
+		// printf("%ld -> %ld | my cost : %d | target cost : %d | total cost :
+		// 	%d | mediane : %d | index : %d\n", current->value,
+		// 	current->target->value, current->cost, current->target->cost,
+		// 	current->cost + current->target->cost, current->is_above_mediane,
+		// 	current->index);
+		current = current->next;
+	}
+}
+
 void	process(t_dllist **a, t_dllist **b)
 {
-	static int	i;
-	t_dllist	*smallest;
+	t_dllist	*biggest;
+	int			b_len;
 
-	if (is_sorted(a))
-		return ;
-	// push all from a untile a == 3
-	// while (get_list_length(*a) > 3)
-	// 	push_b(a, b);
-	// smallest = *b;
-	// while (smallest)
-	// {
-	// 	printf("b : %ld", smallest->value);
-	// 	smallest = smallest->next;
-	// }
-	// fast_sort(a);
-	while (get_list_length(*a) > 3)
+	biggest = NULL;
+	while (get_list_length(*a) > 0)
 		push_b(a, b);
-	fast_sort(a);
 	while (*b)
 	{
-		init_values(a);
 		init_values(b);
-		link_nodes_from_b(a, b);
-		execute_best_action(a, b);
+		init_values(a);
+		b_len = get_list_length(*b);
+		biggest = find_biggest(b);
+		// printf("biggest : %ld\n", biggest->value);
+		if (biggest->index > b_len / 2)
+			while (*b != biggest)
+				reverse_rotate_b(b);
+		else
+			while (*b != biggest)
+				rotate_b(b);
+		// printf("current : %ld\n", (*b)->value);
+		push_a(a, b);
+		// push_a(a, b);
 	}
-	smallest = find_smallest(a);
-	if (smallest->is_above_mediane)
-		while (*a != smallest)
-			rotate_a(a);
-	else
-		while (*a != smallest)
-			reverse_rotate_a(a);
-	// process(a, b);
+	// push_a(a, b);
+	// fast_sort(a);
+	// // print_list_simple(a);
+	// while (*b)
+	// {
+	// 	// print_list_simple(a);
+	// 	link_nodes_from(a, b);
+	// 	// calculate_and_apply_mediane_for_b(a, b);
+	// 	// print_list(b);
+	// 	execute_best_action(a, b);
+	// 	// *b = (*b);
+	// }
+	// print_list(b);
+	// smallest = find_smallest(a);
+	// if (smallest->is_above_mediane)
+	// 	while (*a != smallest)
+	// 		rotate_a(a);
+	// else
+	// 	while (*a != smallest)
+	// 		reverse_rotate_a(a);
+	// t_dllist	*last;
+	// t_dllist	*current;
+	// t_dllist	*smallests;
+	// t_dllist	*biggest;
+	// smallests = NULL;
+	// biggest = NULL;
+	// current = *a;
+	// last = get_last_element(*a);
+	// while (current)
+	// {
+	// 	if (current->value > last->value)
+	// 		add_back_of_list(&biggest, current);
+	// 	else
+	// 		add_back_of_list(&smallests, current);
+	// 	current = current->next;
+	// }
 }
 
 int	main(int argc, char const *argv[])

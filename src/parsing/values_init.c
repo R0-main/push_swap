@@ -6,7 +6,7 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 09:46:45 by rguigneb          #+#    #+#             */
-/*   Updated: 2024/12/14 17:33:20 by rguigneb         ###   ########.fr       */
+/*   Updated: 2024/12/15 15:19:55 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,12 @@ size_t	calculate_mediane(t_dllist **a)
 
 	lst_len = get_list_length(*a);
 	mediane = (lst_len / 2);
-	if (lst_len > 2)
+	if (mediane == 1)
+		mediane++;
+	// printf("mediane : %zu\n", mediane);
+	// if ((int)mediane < lst_len / 2)
+	// 	mediane--;
+	if ((lst_len / 2) % 2 != 0 && (lst_len / 2) != 1)
 		mediane++;
 	return (mediane);
 }
@@ -29,17 +34,28 @@ void	calculate_and_apply_mediane(t_dllist **a)
 	size_t		mediane;
 	size_t		i;
 	t_dllist	*current;
+	int			len;
 
 	mediane = calculate_mediane(a);
-	i = mediane;
+	len = get_list_length(*a);
+	// printf("mediane : %zu\n", mediane);
+	i = 0;
 	current = *a;
 	while (current != NULL)
 	{
-		if (current->index >= (int)mediane)
+		if (current->index >= (int)mediane && mediane > 0)
 		{
-			current->cost = i - 1;
-			i--;
+			if (current->index == len - 1)
+				current->cost = 1;
+			else
+			{
+				if (mediane - i - 1 > 1)
+					current->cost = mediane - i - 1;
+				else
+					current->cost = 1;
+			}
 			current->is_above_mediane = 1;
+			i++;
 		}
 		else
 		{
