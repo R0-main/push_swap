@@ -6,7 +6,7 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 09:09:19 by rguigneb          #+#    #+#             */
-/*   Updated: 2024/12/17 15:37:18 by rguigneb         ###   ########.fr       */
+/*   Updated: 2024/12/17 15:52:12 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -170,7 +170,7 @@ int	main(int argc, char const *argv[])
 	b = NULL;
 	if (parse_arguments(&a, &b, argc, argv))
 	{
-		write(2, "ERROR WITH ARGS\n", 17);
+		write(2, "Error\n", 7);
 		return (0);
 	}
 	// smallest = a;
