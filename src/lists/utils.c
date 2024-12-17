@@ -6,7 +6,7 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 09:52:21 by rguigneb          #+#    #+#             */
-/*   Updated: 2024/12/15 14:15:01 by rguigneb         ###   ########.fr       */
+/*   Updated: 2024/12/17 15:45:40 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	free_list(t_dllist *first)
 	}
 }
 
-t_dllist	*new_linked_list(int value)
+t_dllist	*new_linked_list(long value)
 {
 	t_dllist	*lst;
 

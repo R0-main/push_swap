@@ -6,11 +6,26 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 13:40:48 by rguigneb          #+#    #+#             */
-/*   Updated: 2024/12/17 09:33:35 by rguigneb         ###   ########.fr       */
+/*   Updated: 2024/12/17 15:46:55 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <limits.h>
 #include "push_swap.h"
+
+int	check_for_longer_than_int(t_dllist **a)
+{
+	t_dllist	*current;
+
+	current = *a;
+	while (current)
+	{
+		if (current->value > INT_MAX || current->value < INT_MIN)
+			return (1);
+		current = current->next;
+	}
+	return (0);
+}
 
 int	check_duplicates(t_dllist **a)
 {
@@ -32,7 +47,7 @@ int	check_duplicates(t_dllist **a)
 		}
 		current = current->next;
 	}
-	return (0);
+	return (check_for_longer_than_int(a));
 }
 
 int	is_not_only_space_and_digits(const char *str)

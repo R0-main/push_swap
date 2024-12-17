@@ -6,7 +6,7 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 09:12:15 by rguigneb          #+#    #+#             */
-/*   Updated: 2024/12/15 15:50:24 by rguigneb         ###   ########.fr       */
+/*   Updated: 2024/12/17 15:45:53 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void							init_values(t_dllist **a);
 void							fast_sort(t_dllist **x);
 
 // LST_UTILS
-t_dllist						*new_linked_list(int value);
+t_dllist						*new_linked_list(long value);
 t_dllist						*get_last_element(t_dllist *first);
 void							free_list(t_dllist *first);
 void							delete_element(t_dllist **element);
