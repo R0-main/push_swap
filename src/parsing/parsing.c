@@ -6,11 +6,34 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 13:40:48 by rguigneb          #+#    #+#             */
-/*   Updated: 2024/12/14 09:53:34 by rguigneb         ###   ########.fr       */
+/*   Updated: 2024/12/17 09:33:35 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	check_duplicates(t_dllist **a)
+{
+	t_dllist	*current;
+	t_dllist	*current_begin;
+	t_dllist	*beginning;
+
+	beginning = *a;
+	current = *a;
+	while (current)
+	{
+		current_begin = beginning;
+		while (current_begin)
+		{
+			if (current_begin->index != current->index
+				&& current->value == current_begin->value)
+				return (1);
+			current_begin = current_begin->next;
+		}
+		current = current->next;
+	}
+	return (0);
+}
 
 int	is_not_only_space_and_digits(const char *str)
 {
@@ -41,7 +64,7 @@ int	parse_multiple_args(t_dllist **a, t_dllist **b, int argc,
 		add_back_of_list(a, tmp);
 	}
 	init_values(a);
-	return (0);
+	return (check_duplicates(a));
 }
 
 int	parse_one_string_args(t_dllist **a, t_dllist **b, char const **argv)
@@ -66,7 +89,7 @@ int	parse_one_string_args(t_dllist **a, t_dllist **b, char const **argv)
 	}
 	free(strs);
 	init_values(a);
-	return (0);
+	return (check_duplicates(a));
 }
 
 int	parse_arguments(t_dllist **a, t_dllist **b, int argc, char const *argv[])
