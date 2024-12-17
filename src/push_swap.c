@@ -6,7 +6,7 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 09:09:19 by rguigneb          #+#    #+#             */
-/*   Updated: 2024/12/15 16:31:43 by rguigneb         ###   ########.fr       */
+/*   Updated: 2024/12/17 09:37:38 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,11 +151,18 @@ void	process(t_dllist **a, t_dllist **b)
 		biggest = find_biggest(b);
 		// printf("biggest : %ld\n", biggest->value);
 		// print_list(b);
-		while (*b != biggest)
+		// while (*b != biggest)
+		// {
+		// 	// print_list(b);
+		// 	reverse_rotate_b(b);
+		// }
+		// reverse_rotate_b(b);
+		while ((*b)->value != biggest->value)
 		{
-			// print_list(b);
-			reverse_rotate_b(b);
+			rotate_b(b);
 		}
+
+		push_a(a, b);
 		// reverse_rotate_b(b);
 		// if (biggest->index < b_len / 2)
 		// 	while (*b != biggest)
@@ -165,7 +172,6 @@ void	process(t_dllist **a, t_dllist **b)
 		// 		rotate_b(b);
 		// printf("current : %ld\n", (*b)->value);
 		// print_list(b);
-		push_a(a, b);
 		// push_a(a, b);
 	}
 	// push_a(a, b);

@@ -6,7 +6,7 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 14:29:49 by rguigneb          #+#    #+#             */
-/*   Updated: 2024/12/15 16:25:32 by rguigneb         ###   ########.fr       */
+/*   Updated: 2024/12/16 15:11:24 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,30 @@
 
 static int	reverse_rotate(t_dllist **x)
 {
-	t_dllist	*last; //To store the pointer to the last node
+	t_dllist	*second;
+	t_dllist	*last;
 
-	if (!*x || !(*x)->next) //Check if the stack is empty, or if there's one node
+	if (!x || !*x)
 		return (0);
 	last = get_last_element(*x);
-	last->prev->next = NULL; //Assign to the `next` attribute of the node before itself, `NULL` effectively setting it as the current last node
-	last->next = *x; //Assign to its own `next` attribute as the top node of the stack
-	last->prev = NULL; //Detach itself from the node before it
-	*x = last;  //Complete appending itself to the top of the stack, and now holds the pointer to the top node
-	last->next->prev = last; //Update the current last node of the stack
+	second = *x;
+	if (get_list_length(second) == 1)
+		return (0);
+	*x = last;
+	if (*x)
+	{
+		if ((*x)->prev)
+		{
+			(*x)->prev->next = NULL;
+			(*x)->prev = NULL;
+		}
+		(*x)->next = second;
+	}
+	if (second)
+	{
+		second->prev = last;
+		// last = get_last_element(*x);
+	}
 	init_values(x);
 	return (0);
 }
