@@ -6,7 +6,7 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 09:09:19 by rguigneb          #+#    #+#             */
-/*   Updated: 2024/12/17 15:52:12 by rguigneb         ###   ########.fr       */
+/*   Updated: 2024/12/19 01:51:09 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,25 +138,45 @@ void	print_list(t_dllist **x)
 void	process(t_dllist **a, t_dllist **b)
 {
 	t_dllist	*cheapest;
-	int			b_len;
+	t_dllist	*smallest;
 
 	cheapest = NULL;
+	smallest = NULL;
 	while (get_list_length(*a) > 3)
 		push_b(a, b);
+	fast_sort(a);
 	while (*b)
 	{
-		link_nodes_from(a, b);
-		init_values(b);
 		init_values(a);
-		b_len = get_list_length(*b);
+		init_values(b);
+		link_nodes_from(a, b);
 		cheapest = find_cheapest(b);
-		// printf("cheap -> %ld", cheapest->value);
-		// while ((*b)->value != biggest->value)
-		// {
-		// 	rotate_b(b);
-		// }
-		// push_a(a, b);
+		// printf("cheapest : %ld\n", cheapest->value);
+		while (*b != cheapest)
+		{
+			if (cheapest->is_above_mediane)
+				reverse_rotate_b(b);
+			else
+				rotate_b(b);
+		}
+		while (*a != cheapest->target)
+		{
+			if (cheapest->target->is_above_mediane)
+				reverse_rotate_a(a);
+			else
+				rotate_a(a);
+		}
+		push_a(a, b);
 	}
+	smallest = find_biggest(a);
+	while (*a != smallest)
+	{
+		if (smallest->is_above_mediane)
+			reverse_rotate_a(a);
+		else
+			rotate_a(a);
+	}
+	rotate_a(a);
 }
 
 int	main(int argc, char const *argv[])

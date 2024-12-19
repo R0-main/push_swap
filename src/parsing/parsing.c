@@ -6,7 +6,7 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 13:40:48 by rguigneb          #+#    #+#             */
-/*   Updated: 2024/12/17 15:46:55 by rguigneb         ###   ########.fr       */
+/*   Updated: 2024/12/19 00:04:22 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ int	parse_one_string_args(t_dllist **a, t_dllist **b, char const **argv)
 	while (strs && strs[i])
 	{
 		tmp = new_linked_list(ft_atoi(strs[i]));
-		if (!tmp)
+		if (!tmp || is_not_only_digits(strs[i]))
 			return (free_list(*a), free_list(*b), free(tmp),
 				free_split_until_end(strs, i), 1);
 		free(strs[i]);
@@ -107,7 +107,7 @@ int	parse_one_string_args(t_dllist **a, t_dllist **b, char const **argv)
 	return (check_duplicates(a));
 }
 
-int	parse_arguments(t_dllist **a, t_dllist **b, int argc, char const *argv[])
+int	parse_arguments(t_dllist **a, t_dllist **b, int argc, char const **argv)
 {
 	if (argc <= 1)
 		return (1);
