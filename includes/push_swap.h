@@ -6,7 +6,7 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 09:12:15 by rguigneb          #+#    #+#             */
-/*   Updated: 2024/12/17 15:45:53 by rguigneb         ###   ########.fr       */
+/*   Updated: 2024/12/19 09:27:24 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ typedef struct s_doubly_linked_list
 int								parse_arguments(t_dllist **a, t_dllist **b,
 									int argc, char const *argv[]);
 void							init_values(t_dllist **a);
+
+void							print_list(t_dllist **x);
 
 // FAST SORT
 void							fast_sort(t_dllist **x);

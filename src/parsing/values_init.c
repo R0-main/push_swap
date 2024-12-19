@@ -6,7 +6,7 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 09:46:45 by rguigneb          #+#    #+#             */
-/*   Updated: 2024/12/15 15:19:55 by rguigneb         ###   ########.fr       */
+/*   Updated: 2024/12/19 10:03:56 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,15 @@ size_t	calculate_mediane(t_dllist **a)
 
 	lst_len = get_list_length(*a);
 	mediane = (lst_len / 2);
-	if (mediane == 1)
-		mediane++;
-	// printf("mediane : %zu\n", mediane);
+	// if (lst_len % 2 != 0)
+	// 	mediane++;
+	// if (mediane == 1)
+	// 	mediane++;
+	// // printf("mediane : %zu\n", mediane);
 	// if ((int)mediane < lst_len / 2)
 	// 	mediane--;
-	if ((lst_len / 2) % 2 != 0 && (lst_len / 2) != 1)
-		mediane++;
+	// if ((lst_len / 2) % 2 != 0 && (lst_len / 2) != 1)
+	// 	mediane++;
 	return (mediane);
 }
 
@@ -38,31 +40,22 @@ void	calculate_and_apply_mediane(t_dllist **a)
 
 	mediane = calculate_mediane(a);
 	len = get_list_length(*a);
+	// print_list(a);
 	// printf("mediane : %zu\n", mediane);
-	i = 0;
-	current = *a;
-	while (current != NULL)
+	i = 1;
+	current = get_last_element(*a);
+	while (current != NULL && i <= mediane)
 	{
-		if (current->index >= (int)mediane && mediane > 0)
-		{
-			if (current->index == len - 1)
-				current->cost = 1;
-			else
-			{
-				if (mediane - i - 1 > 1)
-					current->cost = mediane - i - 1;
-				else
-					current->cost = 1;
-			}
-			current->is_above_mediane = 1;
-			i++;
-		}
-		else
-		{
-			current->cost = current->index;
-			current->is_above_mediane = 0;
-		}
-		current = current->next;
+		current->cost = i++;
+		current->is_above_mediane = 1;
+		current = current->prev;
+	}
+	while (current != NULL) // FIX !+ NULL
+	{
+		// printf("current : %p | prev : %p\n", current, current->prev);
+		current->is_above_mediane = 0;
+		current->cost = current->index;
+		current = current->prev;
 	}
 }
 
@@ -89,5 +82,6 @@ void	init_values(t_dllist **a)
 		begin->index = d++;
 		begin = begin->next;
 	}
+	// find_biggest(a)->is_biggest = 1;
 	calculate_and_apply_mediane(a);
 }
