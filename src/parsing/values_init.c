@@ -6,7 +6,7 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 09:46:45 by rguigneb          #+#    #+#             */
-/*   Updated: 2025/01/16 12:21:59 by rguigneb         ###   ########.fr       */
+/*   Updated: 2025/01/16 15:19:56 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,15 +36,13 @@ void	calculate_and_apply_mediane(t_dllist **a)
 	size_t		mediane;
 	size_t		i;
 	t_dllist	*current;
-	int			len;
 
 	mediane = calculate_mediane(a);
-	len = get_list_length(*a);
 	// print_list(a);
 	// printf("mediane : %zu\n", mediane);
 	i = 1;
 	current = get_last_element(*a);
-	while (current != NULL && i < mediane - 1)
+	while (current != NULL && i <= mediane)
 	{
 		current->cost = i++;
 		current->is_above_mediane = 1;

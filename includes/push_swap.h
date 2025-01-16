@@ -6,7 +6,7 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 09:12:15 by rguigneb          #+#    #+#             */
-/*   Updated: 2024/12/19 09:27:24 by rguigneb         ###   ########.fr       */
+/*   Updated: 2025/01/16 15:05:30 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ void							free_split(char **tab, int index);
 void							free_split_until_end(char **tab, int from);
 char							*ft_substr(char const *s, unsigned int start,
 									size_t len);
+size_t							calculate_mediane(t_dllist **a);
 void							link_nodes_from(t_dllist **to, t_dllist **from);
 
 #endif

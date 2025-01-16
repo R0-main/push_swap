@@ -6,7 +6,7 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 09:09:19 by rguigneb          #+#    #+#             */
-/*   Updated: 2025/01/16 12:21:44 by rguigneb         ###   ########.fr       */
+/*   Updated: 2025/01/16 15:29:33 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,6 +141,7 @@ void	process(t_dllist **a, t_dllist **b)
 	t_dllist	*cheapest;
 	t_dllist	*smallest;
 	t_dllist	*biggest;
+	int			d;
 
 	cheapest = NULL;
 	smallest = NULL;
@@ -163,25 +164,32 @@ void	process(t_dllist **a, t_dllist **b)
 		// print_list_simple(b);
 		// printf("cheapest : %ld | cost : %d\n", cheapest->value,
 		// cheapest->cost);
+		// while (*b != cheapest && *a != cheapest->target)
+		// {
+		// 	if (cheapest->is_above_mediane)
+		// 		reverse_rotate_in_both(a, b);
+		// 	else
+		// 		rotate_in_both(a, b);
+		// }
+		d = (int)calculate_mediane(b);
 		while (*b != cheapest)
 		{
-			if (cheapest->is_above_mediane)
+			if (cheapest->index > d)
 				reverse_rotate_b(b);
 			else
 				rotate_b(b);
 		}
+		// int c = (int)calculate_mediane(a);
 		while (*a != cheapest->target)
 		{
 			// printf("a\n");
 			// printf("target : %ld\n", cheapest->target->value);
 			// printf("current a : %ld\n", (*a)->value);
-			if (cheapest->target->is_above_mediane)
-				reverse_rotate_a(a);
-			else
-			{
-				rotate_a(a);
-			}
-			// printf("end\n");
+			// if (cheapest->target->index > get_list_length(*a) / 2)
+			reverse_rotate_a(a);
+			// else
+				// rotate_a(a);
+			// }
 		}
 		push_a(a, b);
 	}
