@@ -6,7 +6,7 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 14:11:47 by rguigneb          #+#    #+#             */
-/*   Updated: 2024/12/15 15:19:47 by rguigneb         ###   ########.fr       */
+/*   Updated: 2025/01/16 12:02:41 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,10 @@ t_dllist	*find_biggest(t_dllist **x)
 	t_dllist	*biggest;
 
 	current = *x;
+	biggest = *x;
 	while (current != NULL)
 	{
-		if (current == *x || current->value > biggest->value)
+		if (current->value > biggest->value)
 		{
 			biggest = current;
 		}

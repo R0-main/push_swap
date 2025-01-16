@@ -6,7 +6,7 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 14:29:49 by rguigneb          #+#    #+#             */
-/*   Updated: 2024/12/19 10:05:09 by rguigneb         ###   ########.fr       */
+/*   Updated: 2025/01/16 11:40:23 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,9 @@ static int	rotate(t_dllist **x)
 	*x = (*x)->next;
 	if (*x)
 		(*x)->prev = NULL;
-	if (first)
-	{
-		first->next = NULL;
-		first->prev = last;
-	}
-	if (last)
-		last->next = first;
+	first->next = NULL;
+	first->prev = last;
+	last->next = first;
 	init_values(x);
 	return (0);
 }

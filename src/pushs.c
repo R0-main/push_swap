@@ -6,7 +6,7 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 16:51:16 by rguigneb          #+#    #+#             */
-/*   Updated: 2024/12/14 15:28:18 by rguigneb         ###   ########.fr       */
+/*   Updated: 2025/01/16 11:29:49 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,22 @@
 
 int	push_a(t_dllist **a, t_dllist **b)
 {
-	t_dllist	*next;
+	t_dllist	*to_push;
 
 	if (!b || !*b)
 		return (1);
-	if (*a == NULL)
+	to_push = *b;
+	*b = to_push->next;
+	to_push->next = NULL;
+	to_push->prev = NULL;
+	if (*a)
 	{
-		next = (*b)->next;
-		(*b)->next = NULL;
-		if (next)
-			next->prev = NULL;
-		*a = *b;
-		*b = next;
+		(*a)->prev = to_push;
+		to_push->next = (*a);
+		*a = to_push;
 	}
 	else
-	{
-		next = (*b)->next;
-		if (next)
-			next->prev = NULL;
-		(*b)->next = (*a);
-		(*a)->prev = *b;
-		*a = (*a)->prev;
-		*b = next;
-	}
+		*a = to_push;
 	init_values(b);
 	init_values(a);
 	write(1, "pa\n", 3);
@@ -45,29 +38,22 @@ int	push_a(t_dllist **a, t_dllist **b)
 
 int	push_b(t_dllist **a, t_dllist **b)
 {
-	t_dllist	*next;
+	t_dllist	*to_push;
 
 	if (!a || !*a)
 		return (1);
-	if (*b == NULL)
+	to_push = *a;
+	*a = to_push->next;
+	to_push->next = NULL;
+	to_push->prev = NULL;
+	if (*b)
 	{
-		next = (*a)->next;
-		(*a)->next = NULL;
-		if (next)
-			next->prev = NULL;
-		*b = *a;
-		*a = next;
+		(*b)->prev = to_push;
+		to_push->next = (*b);
+		*b = to_push;
 	}
 	else
-	{
-		next = (*a)->next;
-		if (next)
-			next->prev = NULL;
-		(*a)->next = (*b);
-		(*b)->prev = *a;
-		*b = (*b)->prev;
-		*a = next;
-	}
+		*b = to_push;
 	init_values(b);
 	init_values(a);
 	write(1, "pb\n", 3);

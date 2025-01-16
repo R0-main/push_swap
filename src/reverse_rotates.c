@@ -6,7 +6,7 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 14:29:49 by rguigneb          #+#    #+#             */
-/*   Updated: 2024/12/19 09:58:44 by rguigneb         ###   ########.fr       */
+/*   Updated: 2025/01/16 11:42:13 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,22 +21,16 @@ static int	reverse_rotate(t_dllist **x)
 		return (0);
 	last = get_last_element(*x);
 	second = *x;
-	if (get_list_length(second) == 1)
+	if (get_list_length(second) <= 1)
 		return (0);
 	*x = last;
-	if (*x)
+	if ((*x)->prev)
 	{
-		if ((*x)->prev)
-		{
-			(*x)->prev->next = NULL;
-			(*x)->prev = NULL;
-		}
-		(*x)->next = second;
+		(*x)->prev->next = NULL;
+		(*x)->prev = NULL;
 	}
-	if (second)
-	{
-		second->prev = last;
-	}
+	(*x)->next = second;
+	second->prev = last;
 	init_values(x);
 	return (0);
 }

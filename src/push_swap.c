@@ -6,7 +6,7 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 09:09:19 by rguigneb          #+#    #+#             */
-/*   Updated: 2024/12/19 10:04:07 by rguigneb         ###   ########.fr       */
+/*   Updated: 2025/01/16 12:21:44 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,8 +116,9 @@ void	print_list_simple(t_dllist **x)
 	current = *x;
 	while (current)
 	{
-		printf("%ld | cost : %d | is above mediane : %d | index : %d\n", current->value,
-			current->cost, current->is_above_mediane, current->index);
+		printf("%ld | cost : %d | is above mediane : %d | index : %d\n",
+			current->value, current->cost, current->is_above_mediane,
+			current->index);
 		current = current->next;
 	}
 }
@@ -147,48 +148,58 @@ void	process(t_dllist **a, t_dllist **b)
 	while (get_list_length(*a) > 3)
 		push_b(a, b);
 	fast_sort(a);
-	// print_list(b);
 	while (*b)
 	{
+		// printf("HERE : %ld\n", (*b)->next->value);
+		// printf("------------------");
+		// print_list(b);
+		// printf("------------------");
 		init_values(a);
 		init_values(b);
 		link_nodes_from(a, b);
 		cheapest = find_cheapest(b);
+		if (!cheapest)
+			break ;
 		// print_list_simple(b);
-		// printf("cheapest : %ld | cost : %d\n", cheapest->value, cheapest->cost);
+		// printf("cheapest : %ld | cost : %d\n", cheapest->value,
+		// cheapest->cost);
 		while (*b != cheapest)
 		{
-			// if (cheapest->is_above_mediane)
-			// 	reverse_rotate_b(b);
-			// else
+			if (cheapest->is_above_mediane)
+				reverse_rotate_b(b);
+			else
 				rotate_b(b);
 		}
 		while (*a != cheapest->target)
 		{
+			// printf("a\n");
 			// printf("target : %ld\n", cheapest->target->value);
 			// printf("current a : %ld\n", (*a)->value);
-			// if (cheapest->target->is_above_mediane)
-			// 	reverse_rotate_a(a);
-			// else
+			if (cheapest->target->is_above_mediane)
+				reverse_rotate_a(a);
+			else
+			{
 				rotate_a(a);
+			}
+			// printf("end\n");
 		}
 		push_a(a, b);
 	}
 	// init_values(a);
 	// init_values(b);
 	// link_nodes_from(a, b);
-	smallest = find_smallest(a);
+	biggest = find_biggest(a);
 	// biggest = find_biggest(a);
 	// printf("smallest cost : %d\n", smallest->cost);
 	// printf("biggest cost: %d\n", biggest->cost);
-	while (*a != smallest)
+	while ((*a)->is_biggest == 0)
 	{
-		if (smallest->is_above_mediane)
+		if (biggest->is_above_mediane)
 			reverse_rotate_a(a);
 		else
 			rotate_a(a);
 	}
-	// rotate_a(a);
+	rotate_a(a);
 }
 
 int	main(int argc, char const **argv)
