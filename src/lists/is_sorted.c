@@ -6,7 +6,7 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 09:10:21 by rguigneb          #+#    #+#             */
-/*   Updated: 2024/12/14 09:40:37 by rguigneb         ###   ########.fr       */
+/*   Updated: 2025/01/17 12:00:18 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	is_sorted(t_dllist **x)
 {
-	long	last_n;
-	int		first_loop;
+	long		last_n;
+	int			first_loop;
 	t_dllist	*current;
 
 	last_n = 0;

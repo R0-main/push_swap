@@ -6,7 +6,7 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 09:37:38 by rguigneb          #+#    #+#             */
-/*   Updated: 2024/12/14 10:11:45 by rguigneb         ###   ########.fr       */
+/*   Updated: 2025/01/17 10:37:31 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	fast_sort(t_dllist **x)
 {
+	if (get_list_length(*x) < 3)
+		return ;
 	if ((*x)->is_biggest)
 	{
 		rotate_a(x);

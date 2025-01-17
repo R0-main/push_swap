@@ -6,7 +6,7 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 09:12:15 by rguigneb          #+#    #+#             */
-/*   Updated: 2025/01/16 15:05:30 by rguigneb         ###   ########.fr       */
+/*   Updated: 2025/01/17 09:21:59 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ typedef struct s_doubly_linked_list
 	int							is_biggest;
 	int							is_above_mediane;
 	struct s_doubly_linked_list	*target;
-	struct s_doubly_linked_list	*prev;
 	struct s_doubly_linked_list	*next;
 }								t_dllist;
 // t_doubly_linked_list;
@@ -39,6 +38,7 @@ void							init_values(t_dllist **a);
 void							print_list(t_dllist **x);
 
 // FAST SORT
+t_dllist						*get_last_before_element(t_dllist *first);
 void							fast_sort(t_dllist **x);
 
 // LST_UTILS

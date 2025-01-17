@@ -6,12 +6,12 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 13:40:48 by rguigneb          #+#    #+#             */
-/*   Updated: 2024/12/19 02:32:13 by rguigneb         ###   ########.fr       */
+/*   Updated: 2025/01/17 12:01:15 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <limits.h>
 #include "push_swap.h"
+#include <limits.h>
 
 int	check_for_longer_than_int(t_dllist **a)
 {
@@ -64,8 +64,7 @@ int	is_not_only_space_and_digits(const char *str)
 	return (0);
 }
 
-int	parse_multiple_args(t_dllist **a, t_dllist **b, int argc,
-		char const **argv)
+int	parse_multiple_args(t_dllist **a, t_dllist **b, int argc, char const **argv)
 {
 	int			i;
 	t_dllist	*tmp;

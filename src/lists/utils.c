@@ -6,7 +6,7 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 09:52:21 by rguigneb          #+#    #+#             */
-/*   Updated: 2024/12/19 09:53:59 by rguigneb         ###   ########.fr       */
+/*   Updated: 2025/01/17 09:26:30 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ t_dllist	*new_linked_list(long value)
 	lst->is_biggest = 0;
 	lst->target = NULL;
 	lst->next = NULL;
-	lst->prev = NULL;
 	return (lst);
 }
 
@@ -65,18 +64,15 @@ t_dllist	*get_last_element(t_dllist *first)
 	return (first);
 }
 
-void	delete_element(t_dllist **element)
+t_dllist	*get_last_before_element(t_dllist *first)
 {
-	(void)element;
-	printf("prev : %p | next : %p\n", (*element)->prev, (*element)->next);
-	if ((*element)->prev)
-	{
-		(*element)->prev->next = (*element)->next;
-	}
-	if ((*element)->next)
-	{
-		(*element) = (*element)->next;
-		(*element)->next->prev = (*element);
-	}
-	// free(element);
+	if (!first)
+		return (NULL);
+	if (get_list_length(first) == 2)
+		return (first);
+	if (get_list_length(first) == 3)
+		return (first->next);
+	while (first && first->next != NULL && first->next->next != NULL)
+		first = first->next;
+	return (first);
 }

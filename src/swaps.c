@@ -6,7 +6,7 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 10:36:51 by rguigneb          #+#    #+#             */
-/*   Updated: 2025/01/16 11:50:46 by rguigneb         ###   ########.fr       */
+/*   Updated: 2025/01/17 12:01:26 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,7 @@ static int	swap(t_dllist **x)
 		return (0);
 	first = (*x);
 	second = (*x)->next;
-	first->prev = second;
 	first->next = second->next;
-	second->prev = NULL;
 	second->next = first;
 	*x = second;
 	init_values(x);
@@ -35,6 +33,7 @@ int	swap_a(t_dllist **a)
 	write(1, "sa\n", 3);
 	return (swap(a));
 }
+
 int	swap_b(t_dllist **b)
 {
 	write(1, "sb\n", 3);

@@ -6,7 +6,7 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 14:11:47 by rguigneb          #+#    #+#             */
-/*   Updated: 2025/01/16 12:02:41 by rguigneb         ###   ########.fr       */
+/*   Updated: 2025/01/17 12:00:55 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@ t_dllist	*find_cheapest(t_dllist **x)
 		}
 		if (cheapest->cost + cheapest->target->cost == 0)
 			return (cheapest);
-		// printf("current cost : %d\n", current->cost + current->target->cost);
-		// printf("cheapest cost : %d\n", cheapest->cost + cheapest->target->cost);
 		current = current->next;
 	}
 	return (cheapest);
@@ -39,6 +37,8 @@ t_dllist	*find_biggest(t_dllist **x)
 	t_dllist	*current;
 	t_dllist	*biggest;
 
+	if (!x)
+		return (NULL);
 	current = *x;
 	biggest = *x;
 	while (current != NULL)
@@ -71,9 +71,9 @@ t_dllist	*find_smallest(t_dllist **x)
 
 t_dllist	*get_target(t_dllist **to, t_dllist **from, t_dllist *k)
 {
-	t_dllist *current;
-	t_dllist *to_biggest;
-	t_dllist *target;
+	t_dllist	*current;
+	t_dllist	*to_biggest;
+	t_dllist	*target;
 
 	(void)from;
 	current = *to;
@@ -97,13 +97,9 @@ void	link_nodes_from(t_dllist **to, t_dllist **from)
 
 	i = 0;
 	current = *from;
-	// init_values(a);
 	while (current != NULL)
 	{
 		current->target = get_target(to, from, current);
-		// printf("biggest value : %d\n", current->is_biggest);
-		// printf("current value : %ld\n", current->value);
-		// printf("target value : %ld\n", current->target->value);
 		current = current->next;
 	}
 	init_values(to);

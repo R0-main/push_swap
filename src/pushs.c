@@ -6,7 +6,7 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 16:51:16 by rguigneb          #+#    #+#             */
-/*   Updated: 2025/01/16 11:29:49 by rguigneb         ###   ########.fr       */
+/*   Updated: 2025/01/17 08:59:08 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,8 @@ int	push_a(t_dllist **a, t_dllist **b)
 	to_push = *b;
 	*b = to_push->next;
 	to_push->next = NULL;
-	to_push->prev = NULL;
 	if (*a)
 	{
-		(*a)->prev = to_push;
 		to_push->next = (*a);
 		*a = to_push;
 	}
@@ -45,10 +43,8 @@ int	push_b(t_dllist **a, t_dllist **b)
 	to_push = *a;
 	*a = to_push->next;
 	to_push->next = NULL;
-	to_push->prev = NULL;
 	if (*b)
 	{
-		(*b)->prev = to_push;
 		to_push->next = (*b);
 		*b = to_push;
 	}
