@@ -25,6 +25,10 @@
 		"regex": "c",
 		"tuple": "c",
 		"variant": "c",
-		"utility": "c"
+		"utility": "c",
+		"random": "c",
+		"get_next_line.h": "c",
+		"stdlib.h": "c",
+		"algorithm": "c"
 	}
 }

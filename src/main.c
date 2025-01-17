@@ -6,7 +6,7 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 14:00:09 by rguigneb          #+#    #+#             */
-/*   Updated: 2025/01/17 14:00:29 by rguigneb         ###   ########.fr       */
+/*   Updated: 2025/01/17 15:10:20 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	main(int argc, char const **argv)
 	if (parse_arguments(&a, &b, argc, argv))
 	{
 		write(2, "Error\n", 7);
-		return (0);
+		return (EXIT_FAILURE);
 	}
 	if (!is_sorted(&a))
 	{
@@ -35,5 +35,5 @@ int	main(int argc, char const **argv)
 	}
 	free_list(a);
 	free_list(b);
-	return (0);
+	return (EXIT_SUCCESS);
 }

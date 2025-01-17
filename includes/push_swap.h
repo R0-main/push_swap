@@ -6,7 +6,7 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 09:12:15 by rguigneb          #+#    #+#             */
-/*   Updated: 2025/01/17 14:55:27 by rguigneb         ###   ########.fr       */
+/*   Updated: 2025/01/17 16:02:08 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ void						push_a(t_list **a, t_list **b);
 void						push_b(t_list **a, t_list **b);
 void						swap_a(t_list **a);
 void						swap_b(t_list **b);
+void						swap_in_both(t_list **a, t_list **b);
 void						rotate_a(t_list **a);
 void						rotate_b(t_list **b);
 void						rotate_in_both(t_list **a, t_list **b);
@@ -86,5 +87,22 @@ t_list						*find_smallest(t_list **x);
 bool						exist_under(t_list **x, long lg);
 void						link_nodes_from(t_list **to, t_list **from);
 void						process(t_list **a, t_list **b);
+
+/****************************bonus*********************************************/
+typedef enum e_moves
+{
+	PB,
+	PA,
+	SA,
+	SB,
+	RA,
+	RB,
+	RRA,
+	RRB,
+	RRR,
+	RR,
+	SS,
+	LAST_MOVE
+}							t_moves;
 
 #endif
