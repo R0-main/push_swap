@@ -1,6 +1,30 @@
 {
 	"files.associations": {
 		"push_swap.h": "c",
-		"type_traits": "c"
+		"type_traits": "c",
+		"array": "c",
+		"*.tcc": "c",
+		"concepts": "c",
+		"deque": "c",
+		"list": "c",
+		"string": "c",
+		"unordered_map": "c",
+		"vector": "c",
+		"memory": "c",
+		"optional": "c",
+		"string_view": "c",
+		"fstream": "c",
+		"future": "c",
+		"istream": "c",
+		"ostream": "c",
+		"sstream": "c",
+		"stop_token": "c",
+		"streambuf": "c",
+		"thread": "c",
+		"functional": "c",
+		"regex": "c",
+		"tuple": "c",
+		"variant": "c",
+		"utility": "c"
 	}
 }

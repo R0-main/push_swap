@@ -1,27 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_not_only_digits.c                               :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/12 14:47:35 by rguigneb          #+#    #+#             */
-/*   Updated: 2024/12/14 09:18:45 by rguigneb         ###   ########.fr       */
+/*   Created: 2025/01/17 14:00:09 by rguigneb          #+#    #+#             */
+/*   Updated: 2025/01/17 14:00:29 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	is_not_only_digits(const char *str)
+int	main(int argc, char const **argv)
 {
-	int	i;
+	t_list	*a;
+	t_list	*b;
 
-	i = 0;
-	while (str[i])
+	a = NULL;
+	b = NULL;
+	if (parse_arguments(&a, &b, argc, argv))
 	{
-		if ((str[i] > '9' || str[i] < '0') && str[i] != '-')
-			return (1);
-		i++;
+		write(2, "Error\n", 7);
+		return (0);
 	}
+	if (!is_sorted(&a))
+	{
+		if (get_list_length(a) == 2)
+			swap_a(&a);
+		else if (get_list_length(a) == 3)
+			fast_sort(&a);
+		else
+			process(&a, &b);
+	}
+	free_list(a);
+	free_list(b);
 	return (0);
 }

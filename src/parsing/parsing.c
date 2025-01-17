@@ -6,7 +6,7 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 13:40:48 by rguigneb          #+#    #+#             */
-/*   Updated: 2025/01/17 13:37:24 by rguigneb         ###   ########.fr       */
+/*   Updated: 2025/01/17 14:54:42 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,20 +48,6 @@ int	check_duplicates(t_list **a)
 		current = current->next;
 	}
 	return (check_for_longer_than_int(a));
-}
-
-int	is_not_only_space_and_digits(const char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		if ((str[i] > '9' || str[i] < '0') && str[i] != ' ' && str[i] != '-')
-			return (1);
-		i++;
-	}
-	return (0);
 }
 
 int	parse_multiple_args(t_list **a, t_list **b, int argc, char const **argv)

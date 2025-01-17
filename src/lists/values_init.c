@@ -6,13 +6,13 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 09:46:45 by rguigneb          #+#    #+#             */
-/*   Updated: 2025/01/17 13:37:26 by rguigneb         ###   ########.fr       */
+/*   Updated: 2025/01/17 14:07:09 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-size_t	calculate_mediane(t_list **a)
+static size_t	calculate_mediane(t_list **a)
 {
 	size_t	mediane;
 	int		lst_len;
@@ -22,7 +22,7 @@ size_t	calculate_mediane(t_list **a)
 	return (mediane);
 }
 
-void	calculate_and_apply_mediane(t_list **a)
+static void	calculate_and_apply_mediane(t_list **a)
 {
 	size_t	mediane;
 	size_t	i;
