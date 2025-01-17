@@ -6,16 +6,16 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 13:40:48 by rguigneb          #+#    #+#             */
-/*   Updated: 2025/01/17 12:01:15 by rguigneb         ###   ########.fr       */
+/*   Updated: 2025/01/17 13:37:24 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <limits.h>
 
-int	check_for_longer_than_int(t_dllist **a)
+int	check_for_longer_than_int(t_list **a)
 {
-	t_dllist	*current;
+	t_list	*current;
 
 	current = *a;
 	while (current)
@@ -27,11 +27,11 @@ int	check_for_longer_than_int(t_dllist **a)
 	return (0);
 }
 
-int	check_duplicates(t_dllist **a)
+int	check_duplicates(t_list **a)
 {
-	t_dllist	*current;
-	t_dllist	*current_begin;
-	t_dllist	*beginning;
+	t_list	*current;
+	t_list	*current_begin;
+	t_list	*beginning;
 
 	beginning = *a;
 	current = *a;
@@ -64,10 +64,10 @@ int	is_not_only_space_and_digits(const char *str)
 	return (0);
 }
 
-int	parse_multiple_args(t_dllist **a, t_dllist **b, int argc, char const **argv)
+int	parse_multiple_args(t_list **a, t_list **b, int argc, char const **argv)
 {
-	int			i;
-	t_dllist	*tmp;
+	int		i;
+	t_list	*tmp;
 
 	i = 0;
 	while (++i < argc)
@@ -81,11 +81,11 @@ int	parse_multiple_args(t_dllist **a, t_dllist **b, int argc, char const **argv)
 	return (check_duplicates(a));
 }
 
-int	parse_one_string_args(t_dllist **a, t_dllist **b, char const **argv)
+int	parse_one_string_args(t_list **a, t_list **b, char const **argv)
 {
-	int			i;
-	t_dllist	*tmp;
-	char		**strs;
+	int		i;
+	t_list	*tmp;
+	char	**strs;
 
 	if (is_not_only_space_and_digits(argv[1]))
 		return (1);
@@ -106,7 +106,7 @@ int	parse_one_string_args(t_dllist **a, t_dllist **b, char const **argv)
 	return (check_duplicates(a));
 }
 
-int	parse_arguments(t_dllist **a, t_dllist **b, int argc, char const **argv)
+int	parse_arguments(t_list **a, t_list **b, int argc, char const **argv)
 {
 	if (argc <= 1)
 		return (1);

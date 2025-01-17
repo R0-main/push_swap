@@ -6,16 +6,16 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 14:11:47 by rguigneb          #+#    #+#             */
-/*   Updated: 2025/01/17 12:00:55 by rguigneb         ###   ########.fr       */
+/*   Updated: 2025/01/17 13:37:21 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_dllist	*find_cheapest(t_dllist **x)
+t_list	*find_cheapest(t_list **x)
 {
-	t_dllist	*current;
-	t_dllist	*cheapest;
+	t_list	*current;
+	t_list	*cheapest;
 
 	current = *x;
 	while (current != NULL)
@@ -32,10 +32,10 @@ t_dllist	*find_cheapest(t_dllist **x)
 	return (cheapest);
 }
 
-t_dllist	*find_biggest(t_dllist **x)
+t_list	*find_biggest(t_list **x)
 {
-	t_dllist	*current;
-	t_dllist	*biggest;
+	t_list	*current;
+	t_list	*biggest;
 
 	if (!x)
 		return (NULL);
@@ -52,10 +52,10 @@ t_dllist	*find_biggest(t_dllist **x)
 	return (biggest);
 }
 
-t_dllist	*find_smallest(t_dllist **x)
+t_list	*find_smallest(t_list **x)
 {
-	t_dllist	*current;
-	t_dllist	*smallest;
+	t_list	*current;
+	t_list	*smallest;
 
 	current = *x;
 	while (current != NULL)
@@ -69,11 +69,11 @@ t_dllist	*find_smallest(t_dllist **x)
 	return (smallest);
 }
 
-t_dllist	*get_target(t_dllist **to, t_dllist **from, t_dllist *k)
+t_list	*get_target(t_list **to, t_list **from, t_list *k)
 {
-	t_dllist	*current;
-	t_dllist	*to_biggest;
-	t_dllist	*target;
+	t_list	*current;
+	t_list	*to_biggest;
+	t_list	*target;
 
 	(void)from;
 	current = *to;
@@ -90,10 +90,10 @@ t_dllist	*get_target(t_dllist **to, t_dllist **from, t_dllist *k)
 	return (target);
 }
 
-void	link_nodes_from(t_dllist **to, t_dllist **from)
+void	link_nodes_from(t_list **to, t_list **from)
 {
-	int			i;
-	t_dllist	*current;
+	int		i;
+	t_list	*current;
 
 	i = 0;
 	current = *from;

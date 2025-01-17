@@ -6,13 +6,13 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 09:46:45 by rguigneb          #+#    #+#             */
-/*   Updated: 2025/01/17 12:00:31 by rguigneb         ###   ########.fr       */
+/*   Updated: 2025/01/17 13:37:26 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-size_t	calculate_mediane(t_dllist **a)
+size_t	calculate_mediane(t_list **a)
 {
 	size_t	mediane;
 	int		lst_len;
@@ -22,11 +22,11 @@ size_t	calculate_mediane(t_dllist **a)
 	return (mediane);
 }
 
-void	calculate_and_apply_mediane(t_dllist **a)
+void	calculate_and_apply_mediane(t_list **a)
 {
-	size_t		mediane;
-	size_t		i;
-	t_dllist	*current;
+	size_t	mediane;
+	size_t	i;
+	t_list	*current;
 
 	mediane = calculate_mediane(a);
 	i = mediane;
@@ -42,11 +42,10 @@ void	calculate_and_apply_mediane(t_dllist **a)
 	}
 }
 
-void	init_values(t_dllist **a)
+void	init_values(t_list **a)
 {
-	int			d;
-	t_dllist	*biggest;
-	t_dllist	*begin;
+	int		d;
+	t_list	*begin;
 
 	d = 0;
 	begin = *a;
@@ -55,12 +54,8 @@ void	init_values(t_dllist **a)
 		begin->index = d++;
 		begin->cost = begin->index;
 		begin->is_above_mediane = 0;
-		begin->is_biggest = 0;
 		begin = begin->next;
 	}
-	biggest = find_biggest(a);
-	if (biggest)
-		biggest->is_biggest = 1;
 	if (*a)
 		calculate_and_apply_mediane(a);
 }

@@ -6,13 +6,13 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 09:52:21 by rguigneb          #+#    #+#             */
-/*   Updated: 2025/01/17 09:26:30 by rguigneb         ###   ########.fr       */
+/*   Updated: 2025/01/17 13:27:40 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	get_list_length(t_dllist *first)
+int	get_list_length(t_list *first)
 {
 	int	i;
 
@@ -27,9 +27,9 @@ int	get_list_length(t_dllist *first)
 	return (i);
 }
 
-void	free_list(t_dllist *first)
+void	free_list(t_list *first)
 {
-	t_dllist	*tmp;
+	t_list	*tmp;
 
 	while (first)
 	{
@@ -39,11 +39,11 @@ void	free_list(t_dllist *first)
 	}
 }
 
-t_dllist	*new_linked_list(long value)
+t_list	*new_linked_list(long value)
 {
-	t_dllist	*lst;
+	t_list	*lst;
 
-	lst = (t_dllist *)malloc(sizeof(t_dllist));
+	lst = (t_list *)malloc(sizeof(t_list));
 	if (!lst)
 		return (NULL);
 	lst->value = value;
@@ -55,7 +55,7 @@ t_dllist	*new_linked_list(long value)
 	return (lst);
 }
 
-t_dllist	*get_last_element(t_dllist *first)
+t_list	*get_last_element(t_list *first)
 {
 	if (!first)
 		return (NULL);
@@ -64,7 +64,7 @@ t_dllist	*get_last_element(t_dllist *first)
 	return (first);
 }
 
-t_dllist	*get_last_before_element(t_dllist *first)
+t_list	*get_last_before_element(t_list *first)
 {
 	if (!first)
 		return (NULL);

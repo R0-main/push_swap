@@ -6,13 +6,13 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 16:54:47 by rguigneb          #+#    #+#             */
-/*   Updated: 2025/01/17 09:17:01 by rguigneb         ###   ########.fr       */
+/*   Updated: 2025/01/17 13:27:40 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	add_front_of_list(t_dllist **first, t_dllist *to_add)
+void	add_front_of_list(t_list **first, t_list *to_add)
 {
 	if (!(*first))
 	{
@@ -26,9 +26,9 @@ void	add_front_of_list(t_dllist **first, t_dllist *to_add)
 	}
 }
 
-void	add_back_of_list(t_dllist **first, t_dllist *to_add)
+void	add_back_of_list(t_list **first, t_list *to_add)
 {
-	t_dllist	*last;
+	t_list	*last;
 
 	if (!*first)
 		*first = to_add;

@@ -6,7 +6,7 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 09:12:15 by rguigneb          #+#    #+#             */
-/*   Updated: 2025/01/17 09:21:59 by rguigneb         ###   ########.fr       */
+/*   Updated: 2025/01/17 13:31:18 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,63 +16,63 @@
 
 # include <stdio.h>
 # include <stdlib.h>
+# include <stdbool.h>
 # include <unistd.h>
 
-typedef struct s_doubly_linked_list
+typedef struct s_linked_list
 {
 	long						value;
 	int							index;
 	int							cost;
-	int							is_biggest;
 	int							is_above_mediane;
-	struct s_doubly_linked_list	*target;
-	struct s_doubly_linked_list	*next;
-}								t_dllist;
+	struct s_linked_list	*target;
+	struct s_linked_list	*next;
+}								t_list;
 // t_doubly_linked_list;
 
 // PARSING
-int								parse_arguments(t_dllist **a, t_dllist **b,
+int								parse_arguments(t_list **a, t_list **b,
 									int argc, char const *argv[]);
-void							init_values(t_dllist **a);
+void							init_values(t_list **a);
 
-void							print_list(t_dllist **x);
+void							print_list(t_list **x);
 
 // FAST SORT
-t_dllist						*get_last_before_element(t_dllist *first);
-void							fast_sort(t_dllist **x);
+t_list						*get_last_before_element(t_list *first);
+void							fast_sort(t_list **x);
 
 // LST_UTILS
-t_dllist						*new_linked_list(long value);
-t_dllist						*get_last_element(t_dllist *first);
-void							free_list(t_dllist *first);
-void							delete_element(t_dllist **element);
-void							add_front_of_list(t_dllist **first,
-									t_dllist *to_add);
-void							add_back_of_list(t_dllist **first,
-									t_dllist *to_add);
-int								get_list_length(t_dllist *first);
+t_list						*new_linked_list(long value);
+t_list						*get_last_element(t_list *first);
+void							free_list(t_list *first);
+void							delete_element(t_list **element);
+void							add_front_of_list(t_list **first,
+									t_list *to_add);
+void							add_back_of_list(t_list **first,
+									t_list *to_add);
+int								get_list_length(t_list *first);
 
-int								push_a(t_dllist **a, t_dllist **b);
-int								push_b(t_dllist **a, t_dllist **b);
+int								push_a(t_list **a, t_list **b);
+int								push_b(t_list **a, t_list **b);
 
-int								swap_a(t_dllist **a);
-int								swap_b(t_dllist **b);
+int								swap_a(t_list **a);
+int								swap_b(t_list **b);
 
-int								rotate_a(t_dllist **a);
-int								rotate_b(t_dllist **b);
-int								rotate_in_both(t_dllist **a, t_dllist **b);
+int								rotate_a(t_list **a);
+int								rotate_b(t_list **b);
+int								rotate_in_both(t_list **a, t_list **b);
 
-// int								reverse_rotate(t_dllist **a, t_dllist **b);
-int								reverse_rotate_a(t_dllist **a);
-int								reverse_rotate_b(t_dllist **b);
-int								reverse_rotate_in_both(t_dllist **a,
-									t_dllist **b);
+// int								reverse_rotate(t_list **a, t_list **b);
+int								reverse_rotate_a(t_list **a);
+int								reverse_rotate_b(t_list **b);
+int								reverse_rotate_in_both(t_list **a,
+									t_list **b);
 
-t_dllist						*find_cheapest(t_dllist **x);
-int								is_sorted(t_dllist **x);
-void							link_nodes_from_b(t_dllist **a, t_dllist **b);
-t_dllist						*find_smallest(t_dllist **x);
-t_dllist						*find_biggest(t_dllist **x);
+t_list						*find_cheapest(t_list **x);
+int								is_sorted(t_list **x);
+void							link_nodes_from_b(t_list **a, t_list **b);
+t_list						*find_smallest(t_list **x);
+t_list						*find_biggest(t_list **x);
 
 // UTILS
 size_t							ft_strlen(const char *s);
@@ -83,7 +83,7 @@ void							free_split(char **tab, int index);
 void							free_split_until_end(char **tab, int from);
 char							*ft_substr(char const *s, unsigned int start,
 									size_t len);
-size_t							calculate_mediane(t_dllist **a);
-void							link_nodes_from(t_dllist **to, t_dllist **from);
+size_t							calculate_mediane(t_list **a);
+void							link_nodes_from(t_list **to, t_list **from);
 
 #endif

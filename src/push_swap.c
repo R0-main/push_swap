@@ -6,7 +6,7 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 09:09:19 by rguigneb          #+#    #+#             */
-/*   Updated: 2025/01/17 12:04:52 by rguigneb         ###   ########.fr       */
+/*   Updated: 2025/01/17 13:34:01 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 #include <stdio.h>
 #include <unistd.h>
 
-bool	get_under(t_dllist **x, long lg)
+bool	get_under(t_list **x, long lg)
 {
-	t_dllist	*current;
+	t_list	*current;
 
 	current = *x;
 	while (current)
@@ -29,7 +29,7 @@ bool	get_under(t_dllist **x, long lg)
 	return (false);
 }
 
-void	pre_ordered_push_to_b(t_dllist **a, t_dllist **b)
+void	pre_ordered_push_to_b(t_list **a, t_list **b)
 {
 	long	threshold;
 	long	threshold_up;
@@ -50,14 +50,34 @@ void	pre_ordered_push_to_b(t_dllist **a, t_dllist **b)
 	}
 }
 
-void	process(t_dllist **a, t_dllist **b)
+bool	set_cheapest_and_target_at_top(t_list **a, t_list **b)
 {
-	t_dllist	*cheapest;
-	t_dllist	*smallest;
-	t_dllist	*biggest;
+	t_list	*cheapest;
 
-	cheapest = NULL;
-	smallest = NULL;
+	cheapest = find_cheapest(b);
+	if (!cheapest || !cheapest->target)
+		return (false);
+	while (*b != cheapest)
+	{
+		if (cheapest->is_above_mediane)
+			reverse_rotate_b(b);
+		else
+			rotate_b(b);
+	}
+	while (*a != cheapest->target)
+	{
+		if (cheapest->target->is_above_mediane)
+			reverse_rotate_a(a);
+		else
+			rotate_a(a);
+	}
+	return (true);
+}
+
+void	process(t_list **a, t_list **b)
+{
+	t_list	*biggest;
+
 	biggest = NULL;
 	pre_ordered_push_to_b(a, b);
 	fast_sort(a);
@@ -66,27 +86,12 @@ void	process(t_dllist **a, t_dllist **b)
 		init_values(a);
 		init_values(b);
 		link_nodes_from(a, b);
-		cheapest = find_cheapest(b);
-		if (!cheapest)
+		if (!set_cheapest_and_target_at_top(a, b))
 			break ;
-		while (*b != cheapest)
-		{
-			if (cheapest->is_above_mediane)
-				reverse_rotate_b(b);
-			else
-				rotate_b(b);
-		}
-		while (*a != cheapest->target)
-		{
-			if (cheapest->target->is_above_mediane)
-				reverse_rotate_a(a);
-			else
-				rotate_a(a);
-		}
 		push_a(a, b);
 	}
 	biggest = find_biggest(a);
-	while ((*a)->is_biggest == 0)
+	while ((*a) != biggest)
 	{
 		if (biggest->is_above_mediane)
 			reverse_rotate_a(a);
@@ -98,8 +103,8 @@ void	process(t_dllist **a, t_dllist **b)
 
 int	main(int argc, char const **argv)
 {
-	t_dllist	*a;
-	t_dllist	*b;
+	t_list	*a;
+	t_list	*b;
 
 	a = NULL;
 	b = NULL;

@@ -6,15 +6,15 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 16:51:16 by rguigneb          #+#    #+#             */
-/*   Updated: 2025/01/17 08:59:08 by rguigneb         ###   ########.fr       */
+/*   Updated: 2025/01/17 13:27:40 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	push_a(t_dllist **a, t_dllist **b)
+int	push_a(t_list **a, t_list **b)
 {
-	t_dllist	*to_push;
+	t_list	*to_push;
 
 	if (!b || !*b)
 		return (1);
@@ -34,9 +34,9 @@ int	push_a(t_dllist **a, t_dllist **b)
 	return (0);
 }
 
-int	push_b(t_dllist **a, t_dllist **b)
+int	push_b(t_list **a, t_list **b)
 {
-	t_dllist	*to_push;
+	t_list	*to_push;
 
 	if (!a || !*a)
 		return (1);
