@@ -36,7 +36,7 @@ BONUS_SRCS	=\
 OBJS		=	${SRCS:.c=.o}
 BONUS_OBJS	=	${BONUS_SRCS:.c=.o}
 
-CHECKER_EXE	=	checker.out
+CHECKER_EXE	=	checker
 
 all: ${EXEC}
 

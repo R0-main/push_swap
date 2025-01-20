@@ -6,12 +6,14 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 14:00:09 by rguigneb          #+#    #+#             */
-/*   Updated: 2025/01/17 15:10:20 by rguigneb         ###   ########.fr       */
+/*   Updated: 2025/01/20 08:41:22 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <signal.h>
 
+// signal(SIGPIPE, SIG_IGN);
 int	main(int argc, char const **argv)
 {
 	t_list	*a;
