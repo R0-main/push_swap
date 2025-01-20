@@ -6,7 +6,7 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 15:13:57 by rguigneb          #+#    #+#             */
-/*   Updated: 2025/01/17 16:23:59 by rguigneb         ###   ########.fr       */
+/*   Updated: 2025/01/20 08:51:33 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,6 @@ int	main(int argc, char const **argv)
 {
 	t_list	*a;
 	t_list	*b;
-	bool	sorted;
 
 	a = NULL;
 	b = NULL;
@@ -91,16 +90,14 @@ int	main(int argc, char const **argv)
 		return (EXIT_FAILURE);
 	}
 	read_moves(&a, &b);
-	sorted = is_sorted(&a) && get_list_length(b) == 0;
-	free_lists(&a, &b);
-	if (sorted)
+	if (is_sorted(&a) && get_list_length(b) == 0)
 	{
 		write(1, "OK\n", 4);
-		return (EXIT_SUCCESS);
+		return (free_lists(&a, &b), EXIT_SUCCESS);
 	}
 	else
 	{
 		write(2, "KO\n", 4);
-		return (EXIT_FAILURE);
+		return (free_lists(&a, &b), EXIT_FAILURE);
 	}
 }

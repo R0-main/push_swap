@@ -28,7 +28,6 @@ SRCS		=\
 
 BONUS_SRCS	=\
 			./src/checker/checker.c\
-			./src/checker/parsing.c\
 			./src/checker/dependencies/gnl/get_next_line.c\
 			./src/checker/dependencies/gnl/get_next_line_utils.c\
 			${COMMON_SRCS}

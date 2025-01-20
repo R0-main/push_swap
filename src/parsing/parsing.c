@@ -6,7 +6,7 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 13:40:48 by rguigneb          #+#    #+#             */
-/*   Updated: 2025/01/17 14:54:42 by rguigneb         ###   ########.fr       */
+/*   Updated: 2025/01/20 08:59:01 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	check_for_longer_than_int(t_list **a)
 	while (current)
 	{
 		if (current->value > INT_MAX || current->value < INT_MIN)
-			return (1);
+			return (free_list(*a), 1);
 		current = current->next;
 	}
 	return (0);
@@ -42,7 +42,7 @@ int	check_duplicates(t_list **a)
 		{
 			if (current_begin->index != current->index
 				&& current->value == current_begin->value)
-				return (1);
+				return (free_list(*a), 1);
 			current_begin = current_begin->next;
 		}
 		current = current->next;
@@ -81,7 +81,7 @@ int	parse_one_string_args(t_list **a, t_list **b, char const **argv)
 	{
 		tmp = new_linked_list(ft_atoi(strs[i]));
 		if (!tmp || is_not_only_digits(strs[i]))
-			return (free_list(*a), free_list(*b), free(tmp),
+			return (free_list(*a), free_list(*b), free_list(tmp),
 				free_split_until_end(strs, i), 1);
 		free(strs[i]);
 		add_back_of_list(a, tmp);
