@@ -6,7 +6,7 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 09:12:15 by rguigneb          #+#    #+#             */
-/*   Updated: 2025/01/17 16:02:08 by rguigneb         ###   ########.fr       */
+/*   Updated: 2025/01/20 11:50:12 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,17 +50,25 @@ void						add_back_of_list(t_list **first, t_list *to_add);
 int							get_list_length(t_list *first);
 
 /****************************moves*********************************************/
+void						push(t_list **a, t_list **b);
 void						push_a(t_list **a, t_list **b);
 void						push_b(t_list **a, t_list **b);
+void						swap(t_list **x);
 void						swap_a(t_list **a);
 void						swap_b(t_list **b);
 void						swap_in_both(t_list **a, t_list **b);
+void						swap_in_both_no_print(t_list **a, t_list **b);
+void						rotate_in_both_no_print(t_list **a, t_list **b);
+void						rotate(t_list **x);
 void						rotate_a(t_list **a);
 void						rotate_b(t_list **b);
+void						reverse_rotate(t_list **x);
 void						rotate_in_both(t_list **a, t_list **b);
 void						reverse_rotate_a(t_list **a);
 void						reverse_rotate_b(t_list **b);
 void						reverse_rotate_in_both(t_list **a, t_list **b);
+void						reverse_rotate_in_both_no_print(t_list **a,
+								t_list **b);
 
 /****************************getters*******************************************/
 t_list						*find_cheapest(t_list **x);

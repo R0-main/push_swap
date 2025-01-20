@@ -6,13 +6,13 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 14:29:49 by rguigneb          #+#    #+#             */
-/*   Updated: 2025/01/17 13:53:40 by rguigneb         ###   ########.fr       */
+/*   Updated: 2025/01/20 11:49:55 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	reverse_rotate(t_list **x)
+void	reverse_rotate(t_list **x)
 {
 	t_list	*second;
 	t_list	*before_last;
@@ -43,9 +43,14 @@ void	reverse_rotate_b(t_list **b)
 	reverse_rotate(b);
 }
 
-void	reverse_rotate_in_both(t_list **a, t_list **b)
+void	reverse_rotate_in_both_no_print(t_list **a, t_list **b)
 {
-	write(1, "rrr\n", 4);
 	reverse_rotate(a);
 	reverse_rotate(b);
+}
+
+void	reverse_rotate_in_both(t_list **a, t_list **b)
+{
+	reverse_rotate_in_both_no_print(a, b);
+	write(1, "rrr\n", 4);
 }

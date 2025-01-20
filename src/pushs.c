@@ -6,13 +6,13 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 16:51:16 by rguigneb          #+#    #+#             */
-/*   Updated: 2025/01/17 13:40:00 by rguigneb         ###   ########.fr       */
+/*   Updated: 2025/01/20 11:45:56 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push_a(t_list **a, t_list **b)
+void	push(t_list **a, t_list **b)
 {
 	t_list	*to_push;
 
@@ -30,26 +30,16 @@ void	push_a(t_list **a, t_list **b)
 		*a = to_push;
 	init_values(b);
 	init_values(a);
+}
+
+void	push_a(t_list **a, t_list **b)
+{
+	push(a, b);
 	write(1, "pa\n", 3);
 }
 
 void	push_b(t_list **a, t_list **b)
 {
-	t_list	*to_push;
-
-	if (!a || !*a)
-		return ;
-	to_push = *a;
-	*a = to_push->next;
-	to_push->next = NULL;
-	if (*b)
-	{
-		to_push->next = (*b);
-		*b = to_push;
-	}
-	else
-		*b = to_push;
-	init_values(b);
-	init_values(a);
+	push(b, a);
 	write(1, "pb\n", 3);
 }
